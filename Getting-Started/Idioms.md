@@ -1,6 +1,6 @@
 # Idioms
 
-Kotlin에서 자주 사용되는 숙어의 모음입니다.
+Kotlin에서 자주 사용하는 코딩 방식의 모음입니다.
 
 ### creating DTOs(POJOs/POCOs)
 
@@ -8,15 +8,15 @@ Kotlin에서 자주 사용되는 숙어의 모음입니다.
 data class Customer(val name: String, val email: String)
 ~~~
 
-Customer 클래스에 다음 기능을 제공합니다.
+이 코드는 다음 기능을 가진 Customer 클래스를 제공합니다.
 
-- 모든 속성에 대한 getters(var의 경우 setters)
+- 모든 프로퍼티에 대한 getters(var 프로퍼티는 setters 포함)
 
 - equals()
 - hashCode()
 - toString()
 - copy()
-- Component1(), component2(), ..., 모든 속성의 경우(Data 클래스 참조)
+- 모든 프로퍼티에 대해 Component1(), component2(), ...(Data 클래스 참조)
 
 ### Default values for function parameters
 
@@ -42,7 +42,7 @@ val positives = list.filter{ it > 0 }
 
 ### string Interpolation
 
-문자열 보간.
+문자열 삽입.
 
 ~~~kotlin
 println("Name $name")
@@ -62,7 +62,7 @@ when(x){
 
 ### traversing a map/list of pairs
 
-두 쌍의 map/list 통과.
+map/list pair 탐색.
 
 ~~~kotlin
 for((k, v) in map){
@@ -70,9 +70,11 @@ for((k, v) in map){
 }
 ~~~
 
-k, v는 아무거나 부를 수 있습니다.
+k, v에 아무 이름이나 붙여도 됩니다.
 
 ### using ranges
+
+범위 사용.
 
 ~~~kotlin
 for(i in 1..100) { ... } // 폐쇄 범위: 100 포함.
@@ -109,7 +111,7 @@ map["key"] = value
 
 ### lazy property
 
-lazy property.
+지연 프로퍼티.
 
 ~~~kotlin
 val p: String by lazy{
@@ -129,7 +131,7 @@ fun String.spaceToCamelCase() { ... }
 
 ### creating a singleton
 
-singleton 만들기.
+singleton 생성.
 
 ~~~kotlin
 object Resource{
@@ -139,7 +141,7 @@ object Resource{
 
 ### if not null shorthand
 
-Null 이 아닐 경우 속기.
+if not null 단축 표현.
 
 ~~~kotlin
 val files = File("Test").listFiles()
@@ -149,7 +151,7 @@ println(files?.size)
 
 ### if not null and else shorthand
 
-Null 이 아니고 다른 속기.
+if not null과 else 단축 표현.
 
 ~~~kotlin
 val files = File("Test").listFiles()
@@ -159,7 +161,7 @@ println(files?.size ?: "empty")
 
 ### executing a statement if null
 
-Null 인 경우 명령어 실행.
+Null 이면 문장 실행.
 
 ~~~kotlin
 val values = ...
@@ -229,7 +231,7 @@ fun test(){
 
 ### 'if' expression
 
-if 표현.
+if 식.
 
 ~~~kotlin
 fun foo(param: Int){
@@ -245,7 +247,7 @@ fun foo(param: Int){
 
 ### builder-style usage of methods that return unit
 
-unit 반환 방법 작성기 스타일 사용.
+Unit을 리턴하는 메서드를 빌더(Builder) 스타일로 사용
 
 ~~~kotlin
 fun arrayOfMinusOnes(size: Int): IntArray{
@@ -255,13 +257,13 @@ fun arrayOfMinusOnes(size: Int): IntArray{
 
 ### single-expression functions
 
-단일 표현 함수.
+한 개의 식을 갖는 함수.
 
 ~~~kotlin
 fun theAnswewre() = 42
 ~~~
 
-이것은 아래와 같습니다.
+이 코드는 다음 코드와 동일합니다.
 
 ~~~kotlin
 fun theAnswer(): Int{
@@ -269,7 +271,7 @@ fun theAnswer(): Int{
 }
 ~~~
 
-다른 숙어들과 효과적으로 결합될 수 있고, 코드를 짧게 만들 수 있습니다. 예: 표현시
+코드를 더 짧게 하기 위해 이 코드를 다른 이디엄과 함계 사용할 수 있습니다. 다음은 when 식과 함께 사용한 예입니다.
 
 ~~~kotlin
 fun transform(color: String): Int = when(color){
@@ -282,7 +284,7 @@ fun transform(color: String): Int = when(color){
 
 ### calling multiple methods on an object instance('with')
 
-개체 인스턴스에서 여러 메서드 호출.
+객체 인스턴스의 여러 번 메서드 호출하기.
 
 ~~~kotlin
 class Turtle{
@@ -306,7 +308,7 @@ with(myTurtle){
 
 ### Java 7's try with resources
 
-Java 7의 리소스 사용 시도.
+Java 7의 try-with-resources.
 
 ~~~kotlin
 val stream = Files.newInputStream(Path.get("/some/file.txt"))
@@ -318,7 +320,7 @@ stream.buffered().reader.use{ reader ->
 
 ### convenient form for a generic function that requires the generic type information
 
-일반 type 정보가 필요한 일반 함수를 위한 편리한 양식. 
+제네릭 타입 정보가 필요한 제네릭 함수를 위한 간편 형식.
 
 ~~~kotlin
 public final class Gson{
